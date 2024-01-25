@@ -121,21 +121,26 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>   
      <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script> 
    <script>  
-         function save (money,score) 
+         function save (money,score,index) 
         {      
                 vkBridge.send('VKWebAppStorageSet', {key:'money',value:money}).then((data) => {if (data.result){
             }});
                 vkBridge.send('VKWebAppStorageSet', {key:'score',value:score}).then((data) => {if (data.result){
             }}); 
+                vkBridge.send('VKWebAppStorageSet', {key:'index',value:index}).then((data) => {if (data.result){
+            }}); 
         }
         function load()
         {
                    vkBridge.send('VKWebAppStorageGet',{ keys:['money']}).then((data) => { if (data.keys) {
-                     var save_money = data.keys[0].value.trim();
+                       var save_money = data.keys[0].value.trim();
                    vkBridge.send('VKWebAppStorageGet',{ keys:['score']}).then((data) => { if (data.keys) {
-                     var save_score = data.keys[0].value.trim();
-                     unityI.SendMessage('SysVk', 'Ms',save_money); 
-                     unityI.SendMessage('SysVk', 'Ss',save_score);
+                       var save_score = data.keys[0].value.trim();
+                   vkBridge.send('VKWebAppStorageGet',{ keys:['index']}).then((data) => { if (data.keys) {
+                       var save_index = data.keys[0].value.trim();
+                       unityI.SendMessage('SysVk', 'Ms', save_money); 
+                       unityI.SendMessage('SysVk', 'Ss', save_score);
+                       unityI.SendMessage('SysVk', 'Is', save_index);
         } });
         } });  
         }
