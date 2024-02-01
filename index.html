@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Endlles</title>
+    <title>Shuhrat|Toy Bear Run</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 </head>
@@ -122,8 +122,9 @@
     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
     <script>
         function leaderH() {
+            var sc=load();
             vkBridge.send("VKWebAppShowLeaderBoardBox", {
-                user_result: save(score)
+                user_result: sc
             })
                 .then((data) => {
                     if (data.success) {
@@ -174,6 +175,7 @@
                     vkBridge.send('VKWebAppStorageGet', { keys: ['score'] }).then((data) => {
                         if (data.keys) {
                             var save_score = data.keys[0].value.trim();
+                            return save_score;
                             vkBridge.send('VKWebAppStorageGet', { keys: ['index'] }).then((data) => {
                                 if (data.keys) {
                                     var save_index = data.keys[0].value.trim();
