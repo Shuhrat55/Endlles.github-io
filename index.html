@@ -10,7 +10,7 @@
   </head>
   <body>
     <div id="unity-container">
-      <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=360 height=640 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -19,10 +19,6 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
-    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-    <script>
-      vkBridge.send('VKWebAppInit');
-    </script>
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
@@ -63,9 +59,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Test.loader.js";
       var config = {
-        dataUrl: buildUrl + "/17f3883f2805f034bc33fec8c9d6f360.data.unityweb",
-        frameworkUrl: buildUrl + "/2a54fcf37ad99e2f0abe83e3092af456.js.unityweb",
-        codeUrl: buildUrl + "/accb6f5390d45e82a092bebd5bc622a2.wasm.unityweb",
+        dataUrl: buildUrl + "/bce15b622c7081792c2aee8db26e2c84.data.unityweb",
+        frameworkUrl: buildUrl + "/5699b165134e166caa2cbc11bc5cb75e.js.unityweb",
+        codeUrl: buildUrl + "/b6c2555273524f45234da7f06e0050b8.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "My project (2)",
