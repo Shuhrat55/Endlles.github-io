@@ -19,6 +19,10 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <script>
+      vkBridge.send('VKWebAppInit');
+    </script>
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
@@ -59,9 +63,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Test.loader.js";
       var config = {
-        dataUrl: buildUrl + "/826df6df1fe3ccfa9fa81398cda00b3a.data.unityweb",
-        frameworkUrl: buildUrl + "/2e8f478037b488cbb95ac54f2def93ea.js.unityweb",
-        codeUrl: buildUrl + "/dd58d3db7563685f5091ba66c646ee25.wasm.unityweb",
+        dataUrl: buildUrl + "/36a2d12250ec43ade382be6c209d14b1.data.unityweb",
+        frameworkUrl: buildUrl + "/2a54fcf37ad99e2f0abe83e3092af456.js.unityweb",
+        codeUrl: buildUrl + "/accb6f5390d45e82a092bebd5bc622a2.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "My project (2)",
