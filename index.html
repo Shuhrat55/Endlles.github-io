@@ -9,6 +9,83 @@
     <link rel="manifest" href="manifest.webmanifest">
   </head>
   <body>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+    <script>
+      vkBridge.send('VKWebAppInit');
+          vkBridge.send('VKWebAppCheckNativeAds', { ad_format: 'interstitial'});
+          vkBridge.send('VKWebAppShowBannerAd', {
+              banner_location: 'bottom'
+              })
+              .then((data) => { 
+                if (data.result) {
+                  // Баннерная реклама отобразилась
+                }
+              })
+              .catch((error) => {
+                // Ошибка
+                console.log(error);
+              });
+    </script>
+    
+    <script>
+                                                    // Подписываемся на события
+                                              vkBridge.subscribe(eventHandler); 
+                                              
+                                              // ...
+                                              
+                                              function eventHandler(e) {
+                                              
+                                                const { type, data } = e.detail;
+                                                switch(type) {
+                                                  case 'VKWebAppViewHide':
+                                                    unityInstance.SendMessage('mus', 'JsMus', 5);
+                                                    break;
+                                                  case 'VKWebAppViewRestore': 
+                                                    
+                                                    break;
+                                                          
+                                                    // Обработчики других событий
+                                                    // ...
+                                              
+                                                  }
+                                              }
+            function FromUnityToJs ()   // функция вызывается из Unity
+      {
+        vkBridge.send('VKWebAppShowNativeAds', {
+          ad_format: 'interstitial' /* Тип рекламы */
+          })
+          .then( (data) => { 
+            if (data.result) {
+              // Реклама была показана
+            } else {
+              // Ошибка
+            }
+          })
+          .catch((error) => { console.log(error); });
+      }
+          function  Podel()
+          {
+              vkBridge.send('VKWebAppShare', {
+                link: 'https://vk.com/app51981003'
+                })
+                .then((data) => { 
+                  if (data.result) {
+                    // Запись размещена
+                  }
+                })
+                .catch((error) => {
+                  // Ошибка
+                  console.log(error);
+                });
+          }
+      jQuery(document).ready(function($) // страница прогружена
+       {
+
+
+
+      });
+    </script>
     <div id="unity-container">
       <canvas id="unity-canvas" width=360 height=640 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -57,11 +134,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/0awsexcrtvybunimoniubyvctrxercvtybunimomiuy.loader.js";
+      var loaderUrl = buildUrl + "/ezsxdcfvguhbnjlkm.loader.js";
       var config = {
-        dataUrl: buildUrl + "/0awsexcrtvybunimoniubyvctrxercvtybunimomiuy.data.unityweb",
-        frameworkUrl: buildUrl + "/0awsexcrtvybunimoniubyvctrxercvtybunimomiuy.framework.js.unityweb",
-        codeUrl: buildUrl + "/0awsexcrtvybunimoniubyvctrxercvtybunimomiuy.wasm.unityweb",
+        dataUrl: buildUrl + "/ezsxdcfvguhbnjlkm.data.unityweb",
+        frameworkUrl: buildUrl + "/ezsxdcfvguhbnjlkm.framework.js.unityweb",
+        codeUrl: buildUrl + "/ezsxdcfvguhbnjlkm.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Test",
